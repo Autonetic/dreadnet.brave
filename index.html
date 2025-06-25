@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- <link rel="stylesheet" href="css/site.css"> -->
+    <link rel="stylesheet" href="css/site.min.css">
+
+    <title>Dreadnet.brave</title>
+    <style>
+body {
+  overflow: hidden;
+}
+    .container {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 40%;
+  left: 50%;
+}
+
+#logo {
+  font-size: 8vw;
+}
+
+.glitch {
+  color: rgb(223, 191, 191);
+  position: relative;
+  font-size: 6vw;
+  // margin: 70px 200px;
+  animation: glitch 5s 5s infinite;
+  font-family: revamped;
+}
+
+.glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  left: -2px;
+  text-shadow: -5px 0 magenta;
+  background: black;
+  overflow: hidden;
+  top: 0;
+  animation: noise-1 3s linear infinite alternate-reverse, glitch 5s 5.05s infinite;
+}
+
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  text-shadow: -5px 0 lightgreen;
+  background: black;
+  overflow: hidden;
+  top: 0;
+  animation: noise-2 3s linear infinite alternate-reverse, glitch 5s 5s infinite;
+}
+
+@keyframes glitch {
+  1%{
+    transform: rotateX(10deg) skewX(90deg);
+  }
+  2%{
+    transform: rotateX(0deg) skewX(0deg);
+  }
+}
+
+@keyframes noise-1 {
+  $steps: 30;
+  @for $i from 1 through $steps {
+    #{percentage($i*(1/$steps))} {
+      $top: random(100);
+      $bottom: random(101 - $top);
+      clip-path: inset(#{$top}px 0 #{$bottom}px 0);
+    }
+  }
+}
+
+@keyframes noise-2 {
+  $steps: 30;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      $top: random(100);
+      $bottom: random(101 - $top);
+      clip-path: inset(#{$top}px 0 #{$bottom}px 0);
+    }
+  }
+}
+
+.scanlines {
+  overflow: hidden;
+  mix-blend-mode: difference;
+}
+
+.scanlines::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) .5%,
+    transparent 1%
+  );
+
+  animation: fudge 7s ease-in-out alternate infinite;
+}
+
+
+@keyframes fudge {
+  from {
+    transform: translate(0px, 0px);
+  }
+  to {
+    transform: translate(0px, 2%);
+  }
+}
+
+.glow {
+  @extend .glitch;
+  text-shadow: 0 0 1000px rgb(223, 191, 191);
+  color: transparent;
+  position: absolute;
+  top: 0;
+}
+
+.subtitle {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 1vw;
+  color: rgba(165, 141, 141, .4);
+  text-transform: uppercase;
+  letter-spacing: 1em;
+  text-align: center;
+  /*position: absolute;*/
+  /*left: 17%;*/
+  animation: glitch-2 5s 5.02s infinite;
+  color: white;
+}
+
+@keyframes glitch-2 {
+  1%{
+    transform: rotateX(10deg) skewX(70deg);
+  }
+  2%{
+    transform: rotateX(0deg) skewX(0deg);
+  }
+}
+.tag-line {
+  font-size: 2vw;
+}
+@media only screen and (max-width: 600px) {
+  #logo {
+    font-size: 10vw;
+  }
+  .subtitle {
+    font-size: 2vw;
+  }
+}
+</style>
+  </head>
+  <body>
+
+<div id="masthead">
+  <div>
+    <div>
+        <h1 class="font-weight-light animate__animated animate__fadeInUp"><div id="logo" class="glitch" data-text="Dreadnet.brave">Dreadnet.brave</div></h1>
+        <p class="lead animate__animated animate__fadeInUp animate__delay-1s tag-line">WTF is this website?</p>
+        <p class="lead animate__animated animate__fadeInUp animate__delay-2s" style="color:#ff369b; font-size:28px;"><b class="subtitle">Web 3 Server-less test site</b></p>
+        <div class="scanlines"></div> 
+        <p class="lead">
+            <a target="_blank" href="https://soundcloud.com/autonetics" style="animation-delay: 2s" class="btn btn-lg btn-outline-light animate__animated animate__fadeInUp fab fa-soundcloud"></a>
+            <a target="_blank" href="https://codepen.io/Autonetix" style="animation-delay: 2.15s" class="btn btn-lg btn-outline-light animate__animated animate__fadeInUp fab fa-codepen"></a>
+            <a target="_blank" href="https://github.com/autonetic" style="animation-delay: 2.30s" class="btn btn-lg btn-outline-light animate__animated animate__fadeInUp fab fa-github"></a>
+            <a target="_blank" href="https://discord.com/invite/Rn9e8eQ27r" style="animation-delay: 2.45s" class="btn btn-lg btn-outline-light animate__animated animate__fadeInUp fab fa-discord"></a>
+            <a target="_blank" href="cdn-cgi/l/email-protection.html#2651434466475352494843524f5e084549" style="animation-delay: 2.60s" class="btn btn-lg btn-outline-light animate__animated animate__fadeInUp fas fa-envelope"></a>   
+        </p>
+        <!--
+        <div class="container">
+        <div class="glitch" data-text=""></div>
+        <div class="glow"></div>
+        <p class="subtitle"></p>
+        </div>
+        <div class="scanlines"></div>
+        -->
+    </div>
+  </div>
+</div>
+
+    <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/popper.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/tsparticles.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>$(window).scroll(function(){$('nav').toggleClass('scrolled', $(this).scrollTop() > 512);});</script> 
+    <script>particlesJS("masthead", {
+  "particles": {
+    "number": {
+      "value": 120,
+      "density": {
+        "enable": true,
+        "value_area": 18000
+      }
+    },
+    "color": {
+      "value": ["#48fb47", "#ff369b", "#FF0883"]
+    },
+    "shape": {
+      "type": "polygon",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 4
+      }
+    },
+    "size": {
+      "value": 2,
+      "random": true,
+      "anim": {
+        "enable": true,
+        "speed": 1,
+        "size_min": 1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 150,
+      "color": "#48fb47",
+      "opacity": 0.4,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "left",
+      "random": true,
+      "straight": true,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": true,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "grab"
+      },
+      "onclick": {
+        "enable": true,
+        "mode": "repulse"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 200,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 1
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+});</script>
+</body>
+</html>
